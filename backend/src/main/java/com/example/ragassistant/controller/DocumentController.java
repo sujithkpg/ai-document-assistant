@@ -1,10 +1,9 @@
 package com.example.ragassistant.controller;
 
 import com.example.ragassistant.dto.DocumentSummaryResponse;
-import com.example.ragassistant.dto.DocumentUploadResponse;
 import com.example.ragassistant.service.DocumentService;
+import com.example.ragassistant.service.RagDocumentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,14 +19,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DocumentController {
     private final DocumentService documentService;
-
-    @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<DocumentUploadResponse> upload(@RequestParam("file") MultipartFile file) {
-        return ResponseEntity.ok(documentService.upload(file));
-    }
+    private final RagDocumentService ragDocumentService;
 
     @GetMapping
     public ResponseEntity<List<DocumentSummaryResponse>> findAll() {
         return ResponseEntity.ok(documentService.findAll());
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) {
+        ragDocumentService.processDocument(file);
+        return ResponseEntity.ok("Document uploaded and indexed successfully.");
     }
 }

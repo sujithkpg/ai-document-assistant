@@ -2,7 +2,7 @@ package com.example.ragassistant.controller;
 
 import com.example.ragassistant.dto.ChatRequest;
 import com.example.ragassistant.dto.ChatResponse;
-import com.example.ragassistant.service.ChatService;
+import com.example.ragassistant.service.RagChatService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/chat")
 @RequiredArgsConstructor
 public class ChatController {
-    private final ChatService chatService;
+    private final RagChatService ragChatService;
 
     @PostMapping
-    public ResponseEntity<ChatResponse> ask(@Valid @RequestBody ChatRequest request) {
-        return ResponseEntity.ok(chatService.ask(request));
+    public ResponseEntity<ChatResponse> chat(@Valid @RequestBody ChatRequest request) {
+        return ResponseEntity.ok(ragChatService.ask(request.question()));
     }
 }

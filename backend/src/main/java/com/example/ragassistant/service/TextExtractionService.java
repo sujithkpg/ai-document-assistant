@@ -27,4 +27,21 @@ public class TextExtractionService {
 
         throw new IllegalArgumentException("Only PDF and TXT files are supported in the starter version.");
     }
+
+    public String extractText(MultipartFile file) {
+        try {
+            String fileName = file.getOriginalFilename();
+
+            if (fileName != null && fileName.toLowerCase().endsWith(".pdf")) {
+                try (PDDocument document = Loader.loadPDF(file.getBytes())) {
+                    return new PDFTextStripper().getText(document);
+                }
+            }
+
+            return new String(file.getBytes(), StandardCharsets.UTF_8);
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to extract text from document", e);
+        }
+    }
 }

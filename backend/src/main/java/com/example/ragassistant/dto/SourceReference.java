@@ -1,4 +1,8 @@
 package com.example.ragassistant.dto;
 
-public record SourceReference(Long chunkId, Integer chunkIndex, String chunkText) {
+public record SourceReference(
+        String fileName,
+        Object chunkIndex,
+        String content
+) {
 }
