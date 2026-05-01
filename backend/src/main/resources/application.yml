@@ -17,8 +17,21 @@ spring:
     console:
       enabled: true
 
+  ai:
+    model:
+      chat: openai
+      embedding: openai
+    openai:
+      api-key:
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0.2
+      embedding:
+        options:
+          model: text-embedding-3-small
 app:
   cors:
     allowed-origin: http://localhost:4200
   ai:
-    mode: mock # mock first; later change to openai/spring-ai implementation
+    mode: openai
