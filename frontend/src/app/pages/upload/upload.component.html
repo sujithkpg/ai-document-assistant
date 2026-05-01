@@ -1,0 +1,21 @@
+<section class="card">
+  <h2>Upload Document</h2>
+  <p class="muted">Supported in starter version: PDF and TXT.</p>
+
+  <div class="form-row">
+    <input type="file" accept=".pdf,.txt" (change)="onFileSelected($event)" />
+    <button type="button" (click)="upload()" [disabled]="isUploading">
+      {{ isUploading ? 'Uploading...' : 'Upload' }}
+    </button>
+  </div>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div class="success" *ngIf="response">
+    <h3>Document Processed</h3>
+    <p><strong>ID:</strong> {{ response.documentId }}</p>
+    <p><strong>File:</strong> {{ response.fileName }}</p>
+    <p><strong>Status:</strong> {{ response.status }}</p>
+    <p><strong>Chunks:</strong> {{ response.chunkCount }}</p>
+  </div>
+</section>

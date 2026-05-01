@@ -1,0 +1,35 @@
+<section class="card">
+  <h2>Ask Questions</h2>
+
+  <div class="form-group">
+    <label>Document</label>
+    <select [(ngModel)]="selectedDocumentId">
+      <option [ngValue]="null">Select document</option>
+      <option *ngFor="let doc of documents" [ngValue]="doc.documentId">
+        {{ doc.fileName }} - {{ doc.status }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Question</label>
+    <textarea rows="4" [(ngModel)]="question" placeholder="Example: What are the required fields?"></textarea>
+  </div>
+
+  <button type="button" (click)="ask()" [disabled]="isLoading">
+    {{ isLoading ? 'Thinking...' : 'Ask' }}
+  </button>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div class="answer" *ngIf="response">
+    <h3>Answer</h3>
+    <p>{{ response.answer }}</p>
+
+    <h3>Source References</h3>
+    <div class="source" *ngFor="let source of response.sources">
+      <strong>Chunk {{ source.chunkIndex }}</strong>
+      <p>{{ source.chunkText }}</p>
+    </div>
+  </div>
+</section>

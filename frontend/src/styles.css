@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+.app-shell {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  margin-bottom: 4px;
+}
+
+.header p,
+.muted {
+  color: #6b7280;
+}
+
+nav {
+  display: flex;
+  gap: 12px;
+}
+
+nav a {
+  text-decoration: none;
+  background: #ffffff;
+  color: #1f2937;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.form-row,
+.form-group {
+  margin-top: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+select,
+textarea,
+input[type='file'] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 18px;
+  background: #111827;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.success,
+.answer {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 10px;
+  background: #f0fdf4;
+}
+
+.error {
+  color: #b91c1c;
+  margin-top: 12px;
+}
+
+.source {
+  margin-top: 12px;
+  padding: 12px;
+  border-left: 4px solid #9ca3af;
+  background: #f9fafb;
+}
